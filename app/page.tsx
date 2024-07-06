@@ -1,113 +1,89 @@
+'use client';
+
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+
+import LOGO from '@/public/logo.svg';
+import AVATAR from '@/public/avatar.png';
+import CHEVRONDOWN from '@/public/chevron-down.svg';
+import BURGER from '@/public/burger.svg';
+import CHEVRONLEFT from '@/public/chevron-left.svg';
+import CAMERAICON from '@/public/camera-icon.svg';
+
+import PersonalInfoBlock from "@/components/personal-info-block/personal-info-block";
 
 export default function Home() {
+  const [openedTab, setOpenedTab] = useState('main-info');
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <header className="flex justify-between items-center py-[29px] px-4 sm:py-6">
+        <Image className="w-[135px] sm:w-[180px]" src={LOGO} alt="Логотип" />
+        <div className="flex gap-y-2 items-center">
+          <button className="border-dark-primary-border border rounded-[18px] py-1.5 px-4 flex w-20 h-9">
+            <Image className="rounded-full" width={24} height={24} src={AVATAR} alt="Аватар сотрудника" />
+            <Image  width={24} height={24} src={CHEVRONDOWN} alt="Иконка открытия меню пользователя"/>
+          </button>
+          <button className="w-10 h-10 flex items-center justify-center">
+            <Image src={BURGER} alt="Кнопка открытия навигации"/>
+          </button>
         </div>
-      </div>
+      </header>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <nav className='my-2'>
+        <Link className="button-text text-dark-tertiary-text py-2 px-4 flex gap-x-2 items-center" href=''>
+          <Image width={24} height={24} src={CHEVRONLEFT} alt="Иконка кнопки вернуться к сотрудникам"/>
+          <p>Вернуться к сотрудникам</p>
+        </Link>
+      </nav>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      <main>
+        <div className="bg-dark-secondary-bg rounded-xl px-4 pb-7 pt-8 flex flex-col gap-y-6 mb-4 sm:py-5 sm:gap-y-[52px] sm:px-10 sm:pt-10 sm:pb-5 min-[440px]:px-6 ">
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          <div className="grid grid-cols-[1fr] grid-rows-[160px,auto] justify-items-center gap-x-12 sm:grid-cols-[160px,auto] sm:justify-items-start">
+            <div className="relative hover-overlay hover:hover-overlay_shown group max-w-[160px]">
+              <Image src={AVATAR} width={160} height={160} alt="Аватар сотрудника" />
+              <Image className="transition-opacity duration-200 z-10 opacity-0 group-hover:opacity-100 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" src={CAMERAICON} width={24} height={24} alt='Иконка камеры'/>
+            </div>
+            <div className="flex flex-col sm:gap-y-2 row-span-2 text-center sm:text-left">
+              <h1 className="custom-headline-text flex flex-col py-6">
+                <span className="">Иванов</span>
+                <span className="">Иван Иванович</span>
+              </h1>
+              <p className="subtitle-1-text flex flex-col gap-y-4">
+                <span>UI/UX designer</span>
+                <span>Россия, Красноярск</span>
+              </p>
+            </div>
+          </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+          <div className="flex items-center justify-center whitespace-nowrap sm:justify-start">
+            <button 
+              data-active={openedTab === 'main-info'}
+              className="px-4 py-[10px] button-text data-[active=false]:inactive-tab data-[active=true]:active-tab" 
+              onClick={() => setOpenedTab('main-info')}
+            >
+              Основная информация
+            </button>
+            <button
+              data-active={openedTab === 'vacation'}
+              className="px-4 py-[10px] button-text data-[active=false]:inactive-tab data-[active=true]:active-tab" 
+              onClick={() => setOpenedTab('vacation')}
+            >
+              Отпуск
+            </button>
+          </div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        </div>
+
+        {
+          openedTab === 'main-info' && (
+            <PersonalInfoBlock />
+          )
+        }
+      </main>
+    </>
+    
   );
 }

@@ -2,32 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }  
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .input {
+    @apply w-full py-2 px-[14px] subtitle-2-text text-dark-secondary-text bg-[transparent] border border-dark-primary-border rounded focus:outline-none
+  }
+  
+  .input:not([readonly]):not(.input-error) {
+    @apply hover:border-dark-primary-text focus:border-dark-accent-border
+  }
+
+  .label {
+    @apply absolute text-dark-secondary-text caption-text px-1 bg-dark-secondary-bg -top-2 left-2
+  }
+
+  .button {
+    @apply button-text bg-brand-blue rounded hover:bg-state-blue-hover transition-colors duration-200 focus:bg-state-blue-focused disabled:bg-state-accent-disabled
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .main-container {
+    @apply max-w-[1494px] mx-auto my-0
+  }
+
+  .custom-headline-text {
+    @apply text-5xl leading-[56px] font-bold
+  }
+
+  .h5-text {
+    @apply text-2xl font-normal
+  }
+
+  .subtitle-1-text {
+    @apply text-base font-normal
+  }
+
+  .subtitle-2-text {
+    @apply text-sm leading-6 font-medium
+  }
+
+  .body-1-text {
+    @apply text-base font-normal
+  }
+
+  .body-2-text {
+    @apply text-sm font-normal
+  }
+
+  .button-text {
+    @apply text-sm font-semibold uppercase
+  }
+
+  .caption-text {
+    @apply text-xs font-normal
+  }
+
+  .active-tab {
+    @apply border-b-2 border-dark-accent-border
+  }
+
+  .inactive-tab {
+    @apply border-b border-dark-primary-border
+  }
+
+  .hover-overlay {
+    @apply after:opacity-0 after:transition-opacity after:duration-200 after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-[#00000080] after:rounded-full cursor-pointer
+  }
+
+  .hover-overlay_shown {
+    @apply after:opacity-100
+  }
+
+  .input-succes {
+    @apply border-dark-succes-border text-dark-succes-text focus:border-dark-succes-border
+  }
+
+  .input-error {
+    @apply border-dark-error-border text-dark-error-text focus:border-dark-error-border
+  }
+
+  @media screen and (max-width: 1500px) {
+    .main-container {
+      @apply px-6
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .custom-headline-text {
+      @apply text-4xl
+    }
+
+    .h5-text {
+      @apply text-xl
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .custom-headline-text {
+      @apply text-3xl
+    }
+
+    .h5-text {
+      @apply text-lg
+    }
+  }
+
+  @media screen and (max-width: 440px) {
+    .h5-text {
+      @apply text-base
+    }
+
+    .main-container {
+      @apply px-0
+    }
+
+    .custom-headline-text {
+      @apply text-2xl
+    }
+  }
+
+  @media screen and (max-width: 390px) {
+    .button-text {
+      @apply text-xs
+    }
   }
 }
