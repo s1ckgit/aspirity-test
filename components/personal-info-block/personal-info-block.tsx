@@ -23,7 +23,10 @@ const PersonalInfoBlock = () => {
         <div className="flex flex-col gap-y-8 xl:max-h-[420px] p-4 bg-dark-secondary-bg rounded-xl sm:p-[30px]">
           <div className="flex justify-between">
             <h5 className="h5-text">Персональная информация</h5>
-            <button onClick={() => setEditInfoModalOpened(true)} className="subtitle-2-text text-dark-tertiary-text">Изменить</button>
+            <button onClick={() => {
+              setEditInfoModalOpened(true);
+              document.body.style.overflow = 'hidden';
+            }} className="subtitle-2-text text-dark-tertiary-text">Изменить</button>
           </div>
 
           <PersonalInfoForm key='readonly-form' variant="readonly"/>
@@ -60,7 +63,10 @@ const PersonalInfoBlock = () => {
 
           <div className="flex gap-y-2 flex-col">
             <p className="subtitle-1-text text-dark-tertiary-text">Команда</p>
-            <div onClick={() => setTeamModalOpened(true)} className="flex items-center relative h-full cursor-pointer">
+            <div onClick={() => {
+              setTeamModalOpened(true);
+              document.body.style.overflow = 'hidden';
+            }} className="flex items-center relative h-full cursor-pointer">
               {
                 peopleData.map((human, i) => {
                   if(i < 7) {
